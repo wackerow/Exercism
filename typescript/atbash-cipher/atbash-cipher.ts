@@ -32,16 +32,12 @@ export default class AtbashCipher {
     const sanitizedMessage = message.toLowerCase().replace(/[^a-z0-9]/g, '');
     let encodedMessage = '';
     for (let i = 0; i < sanitizedMessage.length; i++) {
-
       encodedMessage += sanitizedMessage[i].match(/[0-9]/)
         ? sanitizedMessage[i]
         : this._key[sanitizedMessage[i]];
-      if ((i + 1) % 5 === 0) {
+      if ((i + 1) % 5 === 0 && i !== sanitizedMessage.length - 1) {
         encodedMessage += ' ';
       }
-    }
-    if (encodedMessage[encodedMessage.length - 1] === ' ') {
-      encodedMessage = encodedMessage.substr(0, encodedMessage.length - 1)
     }
     return encodedMessage;
   }
