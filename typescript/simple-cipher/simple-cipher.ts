@@ -16,7 +16,7 @@ class SimpleCipher {
 
   encode(message: string): string {
     let encryptedMessage = '';
-    let msg = message.toLowerCase().split('');
+    const msg = message.toLowerCase().split('');
     for (let i = 0; i < msg.length; i++) {
       const adjustment = this._abc.indexOf(msg[i]);
       const keyAdjustment = this._abc.indexOf(this.key[i % this.key.length]);
@@ -27,7 +27,7 @@ class SimpleCipher {
 
   decode(encryptedMessage: string): string {
     let decryptedMessage = '';
-    let msg = encryptedMessage.split('');
+    const msg = encryptedMessage.split('');
     for (let i = 0; i < msg.length; i++) {
       const adjustment = this._abc.indexOf(msg[i]);
       const keyAdjustment = this._abc.indexOf(this.key[i % this.key.length]);
