@@ -14,17 +14,21 @@ export default class DiffieHellman {
     if (this.isPrime(p) && this.isPrime(g)) {
       [this._p, this._g] = [p, g];
     } else {
-      throw ('Inputs must be prime')
+      throw 'Inputs must be prime'
     }
   }
 
   public getPublicKeyFromPrivateKey(privateKeyA: number): number {
-    if (privateKeyA <= 1 || privateKeyA >= this._p) {throw 'Invalid private key'}
+    if (privateKeyA <= 1 || privateKeyA >= this._p) {
+      throw 'Invalid private key'
+    }
     return (this._g ** privateKeyA) % this._p;
   }
 
   public getSharedSecret(privateKeyA: number, publicKeyB: number): number {
-    if (privateKeyA <= 1 || privateKeyA >= this._p) {throw 'Invalid private key'}
+    if (privateKeyA <= 1 || privateKeyA >= this._p) {
+      throw 'Invalid private key'
+    }
     return  (publicKeyB ** privateKeyA) % this._p;
   }
 }
