@@ -22,9 +22,7 @@ export default class Allergies {
 
   public list(): string[] {
     return this._key.filter(
-      (_: string, index: number): boolean => (
-        (this._allergies & (2 ** index)) !== 0
-      )
+      (allergy: string): boolean => this.allergicTo(allergy)
     );
   }
 }
