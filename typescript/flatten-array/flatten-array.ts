@@ -1,4 +1,4 @@
-type ComplexArray = Array<number | null | undefined | ComplexArray>
+type ComplexArray = (number  | undefined | ComplexArray)[]
 
 export default class FlattenArray {
   public static flatten(_array: ComplexArray): number[] {
@@ -7,7 +7,7 @@ export default class FlattenArray {
       if (typeof item === "number") {
         flattened.push(item)
       } else if (typeof item === "object") {
-        flattened.push(...this.flatten(item as number[]))
+        flattened.push(...this.flatten(item))
       }
     } 
     return flattened
